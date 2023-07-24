@@ -94,14 +94,14 @@ module HttpAcceptLanguage
     def language_region_compatible_from(available_languages)
       available_languages = sanitize_available_locales(available_languages)
       user_preferred_languages.map do |preferred| #en-US
-        preferred = preferred.downcase
-        preferred_language = preferred.split('-', 2).first
+        downcased_preferred = preferred.downcase
+        preferred_language = downcased_preferred.split('-', 2).first
 
         lang_group = available_languages.select do |available| # en
           preferred_language == available.downcase.split('-', 2).first
         end
         
-        lang_group.find { |lang| lang.downcase == preferred } || lang_group.first #en-US, en-UK
+        lang_group.find { |lang| lang.downcase == downcased_preferred } || lang_group.first #en-US, en-UK
       end.compact.first
     end
   end
