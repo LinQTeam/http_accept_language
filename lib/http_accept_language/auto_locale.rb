@@ -15,7 +15,7 @@ module HttpAcceptLanguage
     private
 
     def set_locale
-      I18n.locale = http_accept_language.language_region_compatible_from(I18n.available_locales) || I18n.default_locale
+      I18n.locale = 'ja'
     end
   end
 end
